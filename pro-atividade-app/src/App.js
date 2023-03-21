@@ -1,16 +1,8 @@
 import "./App.css";
+import { useState } from "react";
 
 function App() {
-  const atividades = [
-    {
-      id: 1,
-      descricao: "atividade",
-    },
-    {
-      id: 2,
-      descricao: "atividade",
-    },
-  ];
+  const [atividades, setAtividades] = useState([]);
 
   function addAtividade(e) {
     e.preventDefault();
@@ -20,9 +12,7 @@ function App() {
       descricao: document.getElementById("descricao").value,
     };
 
-    atividades.push(atividade);
-
-    // console.log(atividades);
+    setAtividades([...atividades, { ...atividade }]);
   }
 
   return (
