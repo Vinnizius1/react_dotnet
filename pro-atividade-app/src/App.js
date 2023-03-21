@@ -17,22 +17,36 @@ function App() {
 
   return (
     <>
-      <form>
-        <input id="id" type="text" placeholder="id" />
-        <input id="descricao" type="text" placeholder="descrição" />
-        <button onClick={addAtividade}>+ Atividade</button>
+      <form className="row g-3">
+        <div className="col-md-6">
+          <label for="inputEmail4" className="form-label">
+            Id
+          </label>
+          <input id="id" type="text" className="form-control" />
+        </div>
+        <div className="col-md-6">
+          <label for="inputEmail4" className="form-label">
+            Descrição
+          </label>
+          <input id="descricao" type="text" className="form-control" />
+        </div>
+        <hr />
+        <div class="col-12">
+          <button className="btn btn-outline-secondary" onClick={addAtividade}>
+            + Atividade
+          </button>
+        </div>
       </form>
       <div className="mt-3">
         <header className="list-group">
-          <ul>
-            {atividades.map(atividade => {
-              return (
-                <li key={atividade.id} className="list-group-item">
-                  {atividade.id} - {atividade.descricao}
-                </li>
-              );
-            })}
-          </ul>
+          {atividades.map(atividade => {
+            return (
+              <li key={atividade.id} className="list-group-item">
+                {atividade.id} - {atividade.descricao}
+              </li>
+            );
+          })}
+
           <a
             className="App-link"
             href="https://reactjs.org"
