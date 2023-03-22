@@ -38,24 +38,19 @@ function App() {
         </div>
       </form>
       <div className="mt-3">
-        <header className="list-group">
-          {atividades.map(atividade => {
-            return (
-              <li key={atividade.id} className="list-group-item">
-                {atividade.id} - {atividade.descricao}
-              </li>
-            );
-          })}
-
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {atividades.map(atividade => {
+          return (
+            <>
+              <div key={atividade.id} className="card mb-2 shadow-sm">
+                <div className="card-body">
+                  <p className="card-text">
+                    {atividade.id} - {atividade.descricao}
+                  </p>
+                </div>
+              </div>
+            </>
+          );
+        })}
       </div>
     </>
   );
