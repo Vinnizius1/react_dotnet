@@ -1,8 +1,15 @@
-import "./App.css";
 import { useState } from "react";
+import faceSmile from "./assets/img/faceSmile.svg";
+// import faceMeh from "./assets/img/faceMeh.svg";
 
 function App() {
   const [atividades, setAtividades] = useState([]);
+
+  const mystyle = {
+    width: "20px",
+    margin: "3px",
+    // height: "10px",
+  };
 
   function addAtividade(e) {
     e.preventDefault();
@@ -48,7 +55,11 @@ function App() {
                       </span>
                       - título
                     </h5>
-                    <h6>Prioridade: Normal</h6>
+                    <h6>
+                      Prioridade:{" "}
+                      <img src={faceSmile} alt={faceSmile} style={mystyle} />
+                      Normal
+                    </h6>
                   </div>
                   <p className="card-text">{atividade.descricao}</p>
                 </div>
