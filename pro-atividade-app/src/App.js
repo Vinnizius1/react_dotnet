@@ -1,14 +1,21 @@
 import { useState } from "react";
 import faceSmile from "./assets/img/faceSmile.svg";
 // import faceMeh from "./assets/img/faceMeh.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [atividades, setAtividades] = useState([]);
 
-  const mystyle = {
+  const facestyle = {
     width: "20px",
     margin: "3px",
     // height: "10px",
+  };
+
+  const h6style = {
+    display: "flex",
+    alignItems: "center",
   };
 
   function addAtividade(e) {
@@ -22,7 +29,7 @@ function App() {
 
   return (
     <>
-      <form className="row g-3">
+      <form className="row g-3 m-2">
         <div className="col-md-6">
           <label for="id" className="form-label">
             Id
@@ -42,7 +49,7 @@ function App() {
           </button>
         </div>
       </form>
-      <div className="mt-3">
+      <div className="m-3">
         {atividades.map(atividade => {
           return (
             <>
@@ -55,13 +62,25 @@ function App() {
                       </span>
                       - título
                     </h5>
-                    <h6>
-                      Prioridade:{" "}
-                      <img src={faceSmile} alt={faceSmile} style={mystyle} />
+                    <h6 style={h6style}>
+                      Prioridade:
+                      <img src={faceSmile} alt={faceSmile} style={facestyle} />
                       Normal
                     </h6>
                   </div>
                   <p className="card-text">{atividade.descricao}</p>
+                  <div className="d-flex justify-content-end pt-2 m-0 border-top">
+                    <button className="btn btn-outline-primary me-2 btn-sm">
+                      <FontAwesomeIcon icon={faPencil} />
+                      <i className="me-1"></i>
+                      editar
+                    </button>
+                    <button className="btn btn-outline-danger me-2 btn-sm">
+                      <FontAwesomeIcon icon={faTrashCan} />
+                      <i className="me-1"></i>
+                      deletar
+                    </button>
+                  </div>
                 </div>
               </div>
             </>
