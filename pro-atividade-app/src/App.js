@@ -1,6 +1,7 @@
 import { useState } from "react";
 import faceSmile from "./assets/img/faceSmile.svg";
-// import faceMeh from "./assets/img/faceMeh.svg";
+import faceMeh from "./assets/img/faceMeh.svg";
+import faceFrown from "./assets/img/faceFrown.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
@@ -27,6 +28,31 @@ function App() {
       descricao: document.getElementById("descricao").value,
     };
     setAtividades([...atividades, { ...atividade }]);
+  }
+
+  function prioridadeText(param) {
+    switch (param) {
+      case "1":
+        return "Baixa";
+      case "2":
+        return "Normal";
+      case "3":
+        return "Alta";
+      default:
+        return "Não definido";
+    }
+  }
+  function prioridadeFace(param) {
+    switch (param) {
+      case "1":
+        return faceFrown;
+      case "2":
+        return faceMeh;
+      case "3":
+        return faceSmile;
+      default:
+        return "Não definido";
+    }
   }
 
   return (
@@ -83,8 +109,12 @@ function App() {
                     </h5>
                     <h6 style={h6style}>
                       Prioridade:
-                      <img src={faceSmile} alt={faceSmile} style={facestyle} />
-                      {atividade.prioridade}
+                      <img
+                        src={prioridadeFace(atividade.prioridade)}
+                        alt={prioridadeFace(atividade.prioridade)}
+                        style={facestyle}
+                      />
+                      {prioridadeText(atividade.prioridade)}
                     </h6>
                   </div>
                   <p className="card-text">{atividade.descricao}</p>
