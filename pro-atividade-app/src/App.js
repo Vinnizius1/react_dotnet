@@ -19,6 +19,8 @@ function App() {
     alignItems: "center",
   };
 
+  // const cardBorder = document.getElementById("cardBorder").style;
+
   function addAtividade(e) {
     e.preventDefault();
     const atividade = {
@@ -45,13 +47,26 @@ function App() {
   function prioridadeFace(param) {
     switch (param) {
       case "1":
-        return faceFrown;
+        return faceSmile;
       case "2":
         return faceMeh;
       case "3":
-        return faceSmile;
+        return faceFrown;
       default:
         return "Não definido";
+    }
+  }
+
+  function cardBorder(param) {
+    switch (param) {
+      case "1":
+        return "green";
+      case "2":
+        return "blue";
+      case "3":
+        return "red";
+      default:
+        return "black";
     }
   }
 
@@ -98,7 +113,12 @@ function App() {
         {atividades.map(atividade => {
           return (
             <>
-              <div key={atividade.id} className="card mb-2 shadow-sm">
+              <div
+                key={atividade.id}
+                id="cardBorder"
+                style={{ borderColor: cardBorder(atividade.prioridade) }}
+                className="card mb-2 shadow-sm"
+              >
                 <div className="card-body">
                   <div className="d-flex justify-content-between">
                     <h5 className="card-title">
