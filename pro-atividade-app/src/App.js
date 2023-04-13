@@ -35,11 +35,23 @@ function App() {
   function prioridadeText(param) {
     switch (param) {
       case "1":
-        return "Baixa";
+        return (
+          <span key="opcao1" style={{ color: "green" }}>
+            Baixa
+          </span>
+        );
       case "2":
-        return "Normal";
+        return (
+          <span key="opcao2" style={{ color: "blue" }}>
+            Normal
+          </span>
+        );
       case "3":
-        return "Alta";
+        return (
+          <span key="opcao3" style={{ color: "red" }}>
+            Alta
+          </span>
+        );
       default:
         return "Não definido";
     }
@@ -103,7 +115,7 @@ function App() {
           <input id="descricao" type="text" className="form-control" />
         </div>
         <hr />
-        <div class="col-12">
+        <div className="col-12">
           <button className="btn btn-outline-secondary" onClick={addAtividade}>
             + Atividade
           </button>
