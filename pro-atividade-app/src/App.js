@@ -1,7 +1,8 @@
 import { useState } from "react";
 
+// import Atividade from "./components/Atividade";
 import AtividadeForm from "./components/AtividadeForm";
-import Atividade from "./components/Atividade";
+import AtividadesLista from "./components/AtividadesLista";
 
 function App() {
   const [atividades, setAtividades] = useState([]);
@@ -30,15 +31,10 @@ function App() {
     <>
       <AtividadeForm addAtividade={addAtividade} atividades={atividades} />
 
-      <div className="m-3">
-        {atividades.map(atividade => (
-          <Atividade
-            key={atividade.id}
-            atividade={atividade}
-            deletarAtividade={deletarAtividade}
-          />
-        ))}
-      </div>
+      <AtividadesLista
+        atividades={atividades}
+        deletarAtividade={deletarAtividade}
+      />
     </>
   );
 }
