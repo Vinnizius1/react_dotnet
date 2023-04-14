@@ -32,23 +32,30 @@ function App() {
     setAtividades([...atividades, { ...atividade }]);
   }
 
+  function deletarAtividade(id) {
+    const atividadesFiltradas = atividades.filter(
+      atividade => atividade.id !== id
+    );
+    setAtividades([...atividadesFiltradas]);
+  }
+
   function prioridadeText(param) {
     switch (param) {
       case "1":
         return (
-          <span key="opcao1" style={{ color: "green" }}>
+          <span key={crypto.randomUUID()} style={{ color: "green" }}>
             Baixa
           </span>
         );
       case "2":
         return (
-          <span key="opcao2" style={{ color: "blue" }}>
+          <span key={crypto.randomUUID()} style={{ color: "blue" }}>
             Normal
           </span>
         );
       case "3":
         return (
-          <span key="opcao3" style={{ color: "red" }}>
+          <span key={crypto.randomUUID()} style={{ color: "red" }}>
             Alta
           </span>
         );
@@ -154,12 +161,15 @@ function App() {
                     <button className="btn btn-outline-primary me-2 btn-sm">
                       <FontAwesomeIcon icon={faPencil} />
                       <i className="me-1"></i>
-                      editar
+                      Editar
                     </button>
-                    <button className="btn btn-outline-danger me-2 btn-sm">
+                    <button
+                      className="btn btn-outline-danger me-2 btn-sm"
+                      onClick={() => deletarAtividade(atividade.id)}
+                    >
                       <FontAwesomeIcon icon={faTrashCan} />
                       <i className="me-1"></i>
-                      deletar
+                      Deletar
                     </button>
                   </div>
                 </div>
